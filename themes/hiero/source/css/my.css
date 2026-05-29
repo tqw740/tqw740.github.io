@@ -3,3 +3,48 @@ type your custom css here
 在本文件键入您的自定义CSS
 升级主题文件时请注意保护本文件，防止意外覆盖。
 */
+
+.widget-search-wrap {
+	margin: 20px 0;
+}
+
+.widget-entry-summary-compact {
+	margin: 0;
+}
+
+.widget-entry-title {
+	margin: 0;
+}
+
+.search-form-label {
+	width: 75%;
+}
+
+.search-field--tall {
+	height: 42px;
+}
+
+.cnzz-hidden {
+	display: none;
+}
+
+.archives-wrap--no-margin {
+	margin: 0;
+}
+
+.origin-bg-div {
+	background: #fff;
+	width: 100%;
+}
+
+.origin-bg-inner {
+	max-height: 600px;
+	overflow: hidden;
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+}
+
+.origin-bg-hidden {
+	display: none;
+}

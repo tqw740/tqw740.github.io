@@ -35,9 +35,9 @@
 </header>
 
 <% if (theme.about_big_image){ %>
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
+  <div id="originBgDiv" class="origin-bg-div">
 
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+      <div class="origin-bg-inner">
         <img id="originBg" width="100%" alt="" src="">
       </div>
 
@@ -56,9 +56,9 @@
   bgDiv=document.getElementById("originBgDiv");
   if(location.pathname.match('about')){
     setAboutIMG();
-    bgDiv.style.display='block';
+    bgDiv.classList.remove('origin-bg-hidden');
   }else{
-    bgDiv.style.display='none';
+    bgDiv.classList.add('origin-bg-hidden');
   }
   </script>
 <% } %>

@@ -14,10 +14,10 @@
               </div>
               <div class="widget-entry-summary">
             <% } else { %>
-              <div class="widget-entry-summary" style="margin: 0;">
+              <div class="widget-entry-summary widget-entry-summary-compact">
             <% } %>
 
-              <h6 style="margin: 0;"><a href="<%- url_for(post.path) %>"><%= post.title || '(no title)' %></a></h6>
+              <h6 class="widget-entry-title"><a href="<%- url_for(post.path) %>"><%= post.title || '(no title)' %></a></h6>
               <span><%= date(post.date, 'MMMM D, YYYY') %></span>
             </div>
 
