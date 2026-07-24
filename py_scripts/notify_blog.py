@@ -12,7 +12,7 @@ DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY")
 
 def get_ai_summary(text_content):
     """调用 LLM 生成 100 字总结"""
-    url = "https://api.deepseek.com"
+    url = "https://api.deepseek.com/chat/completions"
     headers = {
         "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
         "Content-Type": "application/json"
