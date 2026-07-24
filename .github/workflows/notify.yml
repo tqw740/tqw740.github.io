@@ -26,9 +26,11 @@ jobs:
       - name: Get Changed Files
         id: changed-files
         run: |
-          # 获取本次 commit 新增的文件列表
+          # 获取本次 commit 新增的文件列表，并使用 EOF 语法多行安全写入环境变量
           ADDED=$(git diff-tree --no-commit-id --name-only -r --diff-filter=A HEAD)
-          echo "ADDED_FILES=$ADDED" >> $GITHUB_ENV
+          echo "ADDED_FILES<<EOF" >> $GITHUB_ENV
+          echo "$ADDED" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Run Notify Script
         env:
