@@ -35,4 +35,4 @@ jobs:
           ROBOT_SECRET_KEY: ${{ secrets.ROBOT_SECRET_KEY }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
-          python scripts/notify_blog.py
+          python py_scripts/notify_blog.py
