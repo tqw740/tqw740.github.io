@@ -1,0 +1,38 @@
+name: Notify Blog Update
+
+on:
+  push:
+    branches:
+      - main  # 或者是 master，取决于你的默认分支名
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # 获取最近 2 次提交以进行 diff 对比
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          pip install requests pyyaml
+
+      - name: Get Changed Files
+        id: changed-files
+        run: |
+          # 获取本次 commit 新增的文件列表
+          ADDED=$(git diff-tree --no-commit-id --name-only -r --diff-filter=A HEAD)
+          echo "ADDED_FILES=$ADDED" >> $GITHUB_ENV
+
+      - name: Run Notify Script
+        env:
+          ROBOT_SECRET_KEY: ${{ secrets.ROBOT_SECRET_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          python scripts/notify_blog.py
