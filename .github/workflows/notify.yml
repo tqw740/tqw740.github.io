@@ -26,7 +26,10 @@ jobs:
       - name: Get Changed Files
         id: changed-files
         run: |
-          # 获取本次 commit 新增的文件列表，并使用 EOF 语法多行安全写入环境变量
+          # 1. 关闭 Git 中文路径转义，防止文件名被转义为 \346\234\272... 并加上双引号
+          git config --global core.quotepath false
+          
+          # 2. 获取本次 commit 新增的文件列表，并使用 EOF 语法多行安全写入环境变量
           ADDED=$(git diff-tree --no-commit-id --name-only -r --diff-filter=A HEAD)
           echo "ADDED_FILES<<EOF" >> $GITHUB_ENV
           echo "$ADDED" >> $GITHUB_ENV
